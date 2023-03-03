@@ -16,6 +16,7 @@ class Todo(db.Model):
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
+  tasks = Todo(content = 'This is first data content')
   if request.method == 'POST':
     task_content = request.form['content']
     new_task = Todo(content = task_content)
@@ -26,6 +27,7 @@ def index():
       return redirect('/')
     except:
       return 'error occured while doing db'
+    # return 'if go success'
 
   else:
     # tasks = Todo.query.order_by(Todo.date_created).all()
